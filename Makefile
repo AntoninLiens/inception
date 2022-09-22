@@ -6,9 +6,11 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 16:00:46 by aliens            #+#    #+#              #
-#    Updated: 2022/09/19 17:06:09 by aliens           ###   ########.fr        #
+#    Updated: 2022/09/22 18:32:14 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+grep -E "127.0.0.1 aliens.42.fr" "127.0.0.1 www.aliens.42.fr" > /dev/null 2 > &1
 
 all:
 	docker-compose -f docker-compose.yml build
@@ -16,8 +18,10 @@ all:
 	mkdir -p /home/aliens/data/wordpress
 	mkdir -p /home/aliens/data/database
 	chmod 777 /etc/hosts
-	echo "127.0.0.1 aliens.42.fr" >> /etc/hosts
-	echo "127.0.0.1 www.aliens.42.fr" >> /etc/hosts
+	if [ $? -ne 0 ]; then
+		echo "127.0.0.1 aliens.42.fr" >> /etc/hosts
+		echo "127.0.0.1 www.aliens.42.fr" >> /etc/hosts
+	fi
 	docker-compose -f docker-compose.yml up # --detach
 
 build:
