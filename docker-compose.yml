@@ -25,7 +25,7 @@ services:
       - inception_network
     depends_on:
       mariadb:
-        # condition: service_healthy
+        condition: service_starting
     env_file: .env
     volumes:
       - wordpress-volume:/var/www/html
