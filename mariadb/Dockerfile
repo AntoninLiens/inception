@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/12 19:31:07 by aliens            #+#    #+#              #
-#    Updated: 2022/09/21 15:20:07 by aliens           ###   ########.fr        #
+#    Updated: 2022/09/26 16:40:55 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ FROM debian:buster
 
 # https://mariadb.org/documentation/
 RUN	apt-get update \
-	&& apt-get upgrade -y
+	&& apt-get upgrade -y \
+	&& apt-get install apt-utils
 
 RUN	apt-get install mariadb-server -y
 
