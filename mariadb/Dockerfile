@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/12 19:31:07 by aliens            #+#    #+#              #
-#    Updated: 2022/09/26 18:30:03 by aliens           ###   ########.fr        #
+#    Updated: 2022/09/26 18:30:42 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,6 @@ RUN rm -rf /var/lib/mysql; \
 
 COPY ./utils/entrypoint.sh ./
 
-ENTRYPOINT [ "bash" ]
+ENTRYPOINT [ "bash", "entrypoint.sh" ]
 
 # CMD [ "mysqld_safe" ]
