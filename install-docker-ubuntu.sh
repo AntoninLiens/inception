@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/26 16:13:55 by aliens            #+#    #+#              #
-#    Updated: 2022/09/26 16:16:08 by aliens           ###   ########.fr        #
+#    Updated: 2022/09/26 16:37:42 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,5 +21,5 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 
 sudo apt update
 
-sudo apt-get install docker-ce -y
+sudo apt-get install docker-ce docker-compose -y
 sudo systemctl status docker
