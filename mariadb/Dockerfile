@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/12 19:31:07 by aliens            #+#    #+#              #
-#    Updated: 2022/09/26 18:10:39 by aliens           ###   ########.fr        #
+#    Updated: 2022/09/26 18:13:03 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,6 @@ RUN	apt-get update \
 
 # COPY ./utils/entrypoint.sh ./
 
-# ENTRYPOINT [ "bash", "entrypoint.sh" ]
+ENTRYPOINT [ "bash" ]
 
 # CMD [ "mysqld_safe" ]
