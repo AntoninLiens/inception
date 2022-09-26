@@ -1,16 +1,17 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    install-docker.sh                                  :+:      :+:    :+:    #
+#    install-docker-debian.sh                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/12 16:54:19 by aliens            #+#    #+#              #
-#    Updated: 2022/09/17 17:11:25 by aliens           ###   ########.fr        #
+#    Updated: 2022/09/26 16:14:28 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 sudo apt-get update
+sudo apt-get upgrade -y
 
 sudo apt-get install ca-certificates curl gnupg lsb-release -y
 

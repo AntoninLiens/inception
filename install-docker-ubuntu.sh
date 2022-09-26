@@ -1,22 +1,25 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Dockerfile                                         :+:      :+:    :+:    #
+#    install-docker-ubuntu.sh                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/09/12 19:30:32 by aliens            #+#    #+#              #
-#    Updated: 2022/09/26 15:58:36 by aliens           ###   ########.fr        #
+#    Created: 2022/09/26 16:13:55 by aliens            #+#    #+#              #
+#    Updated: 2022/09/26 16:16:08 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FROM debian:buster
+sudo apt-get update
+sudo apt-get upgrade -y
 
-RUN apt-get update \
-	&& apt-get upgrade -y \
-	&& apt-get install -y php7.3 php7.3-fpm php7.3-mysql curl
+sudo apt-get install  curl apt-transport-https ca-certificates software-properties-common -y
 
-# https://kinsta.com/fr/blog/wp-cli/
-RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
-	&& chmod +x wp-cli.phar \
-	&& mv wp-cli.phar /usr/local/bin/wp
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+sudo apt update
+
+sudo apt-get install docker-ce -y
+sudo systemctl status docker

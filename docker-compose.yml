@@ -17,33 +17,33 @@ services:
     #   timeout: 5s
     #   retries: 10
 
-  wordpress:
-    container_name: wordpress
-    build: ./wordpress
-    image: wordpress
-    networks:
-      - inception_network
-    depends_on:
-      mariadb:
-        condition: service_started
-    env_file: .env
-    volumes:
-      - wordpress-volume:/var/www/html
-    restart: unless-stopped
+  # wordpress:
+  #   container_name: wordpress
+  #   build: ./wordpress
+  #   image: wordpress
+  #   networks:
+  #     - inception_network
+  #   depends_on:
+  #     mariadb:
+  #       condition: service_started
+  #   env_file: .env
+  #   volumes:
+  #     - wordpress-volume:/var/www/html
+  #   restart: unless-stopped
       
-  nginx:
-    container_name: nginx
-    build: ./nginx
-    image: nginx
-    networks:
-      - inception_network
-    depends_on:
-      - wordpress
-    ports:
-      - "443:443"
-    volumes:
-      - "wordpress-volume:/var/www/html"
-    restart: unless-stopped
+  # nginx:
+  #   container_name: nginx
+  #   build: ./nginx
+  #   image: nginx
+  #   networks:
+  #     - inception_network
+  #   depends_on:
+  #     - wordpress
+  #   ports:
+  #     - "443:443"
+  #   volumes:
+  #     - "wordpress-volume:/var/www/html"
+  #   restart: unless-stopped
 
 networks:
   inception_network:
@@ -55,9 +55,9 @@ volumes:
       device: /home/aliens/data/database
       type: volume
       o: bind
-  wordpress-volume:
-    driver: local
-    driver_opts:
-      device: /home/aliens/data/wordpress
-      type: volume
-      o: bind
+  # wordpress-volume:
+  #   driver: local
+  #   driver_opts:
+  #     device: /home/aliens/data/wordpress
+  #     type: volume
+  #     o: bind
