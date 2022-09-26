@@ -6,7 +6,7 @@ services:
     build: ./mariadb
     env_file: .env
     image: mariadb
-    restart: no
+    restart: unless-stopped
     networks:
       - inception_network
     volumes:
