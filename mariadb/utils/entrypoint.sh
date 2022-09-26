@@ -1,5 +1,3 @@
-#!/bin/bash
-
 echo "update root password"
 mysql -e "UPDATE mysql.user SET Password = PASSWORD('$MARIADB_ROOT_PASSWORD') WHERE User = 'root'"
 
