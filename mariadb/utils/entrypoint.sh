@@ -1,3 +1,30 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    entrypoint.sh                                      :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/09/26 17:44:18 by aliens            #+#    #+#              #
+#    Updated: 2022/09/26 17:45:31 by aliens           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+#!/bin/sh
+
+if [ ! -d "/run/mysqld" ]; then
+	mkdir -p /run/mysqld
+	chown -R mysql:mysql /run/mysqld
+fi
+
+if [ ! -d "/var/lib/mysql/mysql" ]; then
+	
+	chown -R mysql:mysql /var/lib/mysql
+
+	# init database
+	mysql_install_db --basedir=/usr --datadir=/var/lib/mysql --user=mysql --rpm > /dev/null
+fi		
+
 echo "update root password"
 mysql -e "UPDATE mysql.user SET Password = PASSWORD('$MARIADB_ROOT_PASSWORD') WHERE User = 'root'"
 
