@@ -6,24 +6,17 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/26 17:44:18 by aliens            #+#    #+#              #
-#    Updated: 2022/09/26 17:47:27 by aliens           ###   ########.fr        #
+#    Updated: 2022/09/26 17:51:13 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/sh
 
-if [ ! -d "/run/mysqld" ]; then
-	mkdir -p /run/mysqld
-	chown -R mysql:mysql /run/mysqld
-fi
-
-if [ ! -d "/var/lib/mysql/mysql" ]; then
-	
-	chown -R mysql:mysql /var/lib/mysql
-
-	# init database
-	mysql_install_db --basedir=/usr --datadir=/var/lib/mysql --user=mysql --rpm > /dev/null
-fi		
+if [ ! -d "var/run/mysqld" ]; then
+	echo "create /var/run/mysqld"
+	mkdir -p var/run/mysqld
+	chown -R mysql:mysql var/run/mysqld
+fi	
 
 echo "update root password"
 mysql -e "UPDATE mysql.user SET Password = PASSWORD('$MARIADB_ROOT_PASSWORD') WHERE User = 'root'"
@@ -42,5 +35,3 @@ mysql -e "grant all privileges on $MARIADB_DATABASE.* to $MARIADB_USER@'%'"
 
 echo "make our changes take effect"
 mysql -e "FLUSH PRIVILEGES"
-
-exec /usr/bin/mysqld --user=mysql --console
