@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/26 17:44:18 by aliens            #+#    #+#              #
-#    Updated: 2022/09/28 00:59:10 by aliens           ###   ########.fr        #
+#    Updated: 2022/09/28 01:55:35 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,3 +26,5 @@ if [ ! -d /var/lib/mysql/$MARIADB_DATABASE ]; then
 
 	service mysql stop
 fi
+
+mysqld_safe
