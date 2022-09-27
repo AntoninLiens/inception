@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/12 19:31:07 by aliens            #+#    #+#              #
-#    Updated: 2022/09/27 17:01:22 by aliens           ###   ########.fr        #
+#    Updated: 2022/09/27 17:04:44 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,6 @@ RUN	apt-get update \
 	&& apt-get upgrade -y \
 	&& apt-get install mariadb-server -y
 
-COPY ./utils/entrypoint.sh ./
+# COPY ./utils/entrypoint.sh ./
 
-ENTRYPOINT [ "bash", "entrypoint.sh" ]
+# ENTRYPOINT [ "bash", "entrypoint.sh" ]
