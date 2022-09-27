@@ -6,11 +6,13 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/26 17:44:18 by aliens            #+#    #+#              #
-#    Updated: 2022/09/26 18:10:11 by aliens           ###   ########.fr        #
+#    Updated: 2022/09/27 17:10:20 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/sh
+
+mysqld_safe
 
 echo "update root password"
 mysql -e "UPDATE mysql.user SET Password = PASSWORD('$MARIADB_ROOT_PASSWORD') WHERE User = 'root'"
