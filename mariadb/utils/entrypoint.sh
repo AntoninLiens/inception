@@ -6,11 +6,20 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/26 17:44:18 by aliens            #+#    #+#              #
-#    Updated: 2022/09/27 17:12:14 by aliens           ###   ########.fr        #
+#    Updated: 2022/09/27 17:18:27 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/sh
+
+# Give owner and group for the the DB which is normally automatically created in this folder 
+chown -R mysql:mysql /var/lib/mysql
+# Create a folder for the daemon (mysql server’s socket file)
+mkdir -p /var/run/mysqld
+#Give owner and group to that too
+chown -R mysql:mysql /var/run/mysqld
+#touch /var/run/mysqld/mysqlf.pid
+mkfifo /var/run/mysqld/mysqld.sock
 
 echo "update root password"
 mysql -e "UPDATE mysql.user SET Password = PASSWORD('$MARIADB_ROOT_PASSWORD') WHERE User = 'root'"
