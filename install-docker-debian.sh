@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/12 16:54:19 by aliens            #+#    #+#              #
-#    Updated: 2022/09/26 16:14:28 by aliens           ###   ########.fr        #
+#    Updated: 2022/09/28 01:19:23 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,3 +24,7 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.
 sudo apt-get update
 
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
+
+sudo adduser $USER docker
+
+sudo reboot
