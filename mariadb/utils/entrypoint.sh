@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/26 17:44:18 by aliens            #+#    #+#              #
-#    Updated: 2022/09/27 17:18:27 by aliens           ###   ########.fr        #
+#    Updated: 2022/09/27 17:20:52 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ mkdir -p /var/run/mysqld
 chown -R mysql:mysql /var/run/mysqld
 #touch /var/run/mysqld/mysqlf.pid
 mkfifo /var/run/mysqld/mysqld.sock
+
+service mysql start
 
 echo "update root password"
 mysql -e "UPDATE mysql.user SET Password = PASSWORD('$MARIADB_ROOT_PASSWORD') WHERE User = 'root'"
@@ -38,5 +40,7 @@ mysql -e "grant all privileges on $MARIADB_DATABASE.* to $MARIADB_USER@'%'"
 
 echo "make our changes take effect"
 mysql -e "FLUSH PRIVILEGES"
+
+service mysql stop
 
 mysqld_safe
