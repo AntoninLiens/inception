@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/26 17:44:18 by aliens            #+#    #+#              #
-#    Updated: 2022/09/27 17:20:52 by aliens           ###   ########.fr        #
+#    Updated: 2022/09/27 17:22:10 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,13 +25,6 @@ service mysql start
 
 echo "update root password"
 mysql -e "UPDATE mysql.user SET Password = PASSWORD('$MARIADB_ROOT_PASSWORD') WHERE User = 'root'"
-
-echo "kill the anonymous users"
-mysql -e "DROP USER ''@'localhost'"
-mysql -e "DROP USER ''@'$(hostname)'"
-
-echo "kill off the demo database"
-mysql -e "DROP DATABASE test"
 
 echo "create $MARIADB_DATABASE"
 mysql -e "create database $MARIADB_DATABASE"
