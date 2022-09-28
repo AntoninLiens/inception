@@ -46,7 +46,7 @@ services:
   #   restart: unless-stopped
 
 networks:
-  inception_network:
+  inside:
 
 volumes:
   mariadb-volume:
