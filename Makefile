@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 16:00:46 by aliens            #+#    #+#              #
-#    Updated: 2022/09/28 02:09:29 by aliens           ###   ########.fr        #
+#    Updated: 2022/09/28 02:10:34 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ down:
 
 clean: down
 	docker-compose -v --rmi all
-	docker volume rm $(docker volume ls -q)
+	@echo docker volume rm $(docker volume ls -q)
 
 fclean: down clean
 	docker system prune -af --volumes
