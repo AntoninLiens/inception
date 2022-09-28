@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 16:00:46 by aliens            #+#    #+#              #
-#    Updated: 2022/09/28 02:06:52 by aliens           ###   ########.fr        #
+#    Updated: 2022/09/28 02:09:29 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,18 +20,15 @@ all:
 	echo "127.0.0.1 www.aliens.42.fr" >> /etc/hosts
 	docker-compose -f docker-compose.yml up # --detach
 
-build:
-	docker-compose -f docker-compose.yml build
-
 up:
 	docker-compose -f docker-compose.yml up # --detach
 
 down:
 	docker-compose -f docker-compose.yml down
-	docker volume rm $(docker volume ls -q)
 
 clean: down
 	docker-compose -v --rmi all
+	docker volume rm $(docker volume ls -q)
 
 fclean: down clean
 	docker system prune -af --volumes
