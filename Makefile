@@ -6,11 +6,11 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 16:00:46 by aliens            #+#    #+#              #
-#    Updated: 2022/09/28 02:16:34 by aliens           ###   ########.fr        #
+#    Updated: 2022/09/28 15:19:44 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-VOLUMES_DOCKER=	$(docker ls -q)
+VOLUMES_DOCKER=$(docker ls -q)
 
 all:
 	docker-compose -f docker-compose.yml build
@@ -30,6 +30,7 @@ down:
 
 clean: down
 	docker-compose -f docker-compose.yml -v --rmi all
+	docker volume rm $(VOLUMES_DOCKER)
 
 fclean: down clean
 	docker system prune -af --volumes
