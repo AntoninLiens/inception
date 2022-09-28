@@ -8,7 +8,7 @@ services:
     image: mariadb
     restart: unless-stopped
     networks:
-      - inception_network
+      - inside
     volumes:
       - mariadb-volume:/var/lib/mysql
     healthcheck:
@@ -22,7 +22,7 @@ services:
   #   build: ./wordpress
   #   image: wordpress
   #   networks:
-  #     - inception_network
+  #     - inside
   #   depends_on:
   #     mariadb:
   #       condition: service_started
@@ -36,7 +36,7 @@ services:
   #   build: ./nginx
   #   image: nginx
   #   networks:
-  #     - inception_network
+  #     - inside
   #   depends_on:
   #     - wordpress
   #   ports:
