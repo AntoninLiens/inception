@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 16:00:46 by aliens            #+#    #+#              #
-#    Updated: 2022/09/28 02:02:45 by aliens           ###   ########.fr        #
+#    Updated: 2022/09/28 02:06:52 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ up:
 
 down:
 	docker-compose -f docker-compose.yml down
-	echo docker volume rm $(docker volume ls -q)
+	docker volume rm $(docker volume ls -q)
 
 clean: down
 	docker-compose -v --rmi all
