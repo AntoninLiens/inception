@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 16:00:46 by aliens            #+#    #+#              #
-#    Updated: 2022/09/26 16:41:36 by aliens           ###   ########.fr        #
+#    Updated: 2022/09/28 02:02:45 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,15 +28,15 @@ up:
 
 down:
 	docker-compose -f docker-compose.yml down
+	echo docker volume rm $(docker volume ls -q)
 
-clean: 
-	docker-compose -f docker-compose.yml down -v --rmi all
+clean: down
+	docker-compose -v --rmi all
 
 fclean: down clean
 	docker system prune -af --volumes
 	rm -rf /home/aliens/data
 	docker network prune -f
-	echo docker volume rm $(docker volume ls -q)
 	docker image prune -f
 
 re: fclean all
