@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 14:08:45 by aliens            #+#    #+#              #
-#    Updated: 2022/09/30 14:36:30 by aliens           ###   ########.fr        #
+#    Updated: 2022/09/30 14:38:20 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,14 +14,13 @@ FROM debian:buster
 
 RUN	apt-get update \
 	&& apt-get upgrade -y \
-	&& apt-get install -y curl mariadb-client
+	&& apt-get install -y curl php7.3 php7.3-fpm php7.3-mysql
 
 RUN	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
 	&& chmod +x wp-cli.phar \
 	&& mv wp-cli.phar /usr/local/bin/wp
 
-RUN mkdir -p /run/php \
-	&& mkdir -p /var/www/wordpress \
+RUN mkdir -p /var/www/wordpress \
 	&& wp core download --path="/var/www/wordpress" --allow-root
 
 
