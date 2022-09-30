@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 14:08:45 by aliens            #+#    #+#              #
-#    Updated: 2022/09/30 13:54:19 by aliens           ###   ########.fr        #
+#    Updated: 2022/09/30 13:57:21 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ RUN	apt-get update \
 	&& apt-get upgrade -y \
 	&& apt-get install -y curl mariadb-client
 
-RUN	curl https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar --output /user/bin/local/wp \
-	&& chmod +x /usr/local/bin/wp
+RUN	curl https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar --output /user/bin/local/wp 
+RUN	chmod +x /usr/local/bin/wp
 
 
 
