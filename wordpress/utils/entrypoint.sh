@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 14:34:37 by aliens            #+#    #+#              #
-#    Updated: 2022/10/01 16:48:42 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/01 17:15:50 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ wp config create \
 	--allow-root \
 	--skip-check
 
-if [ ! wp core is-installed --allow-root ]; then
+if ! wp core is-installed --allow-root; then
 	echo "install wordpress"
 	wp core install \
 		--url=$WORPRESS_URL \
