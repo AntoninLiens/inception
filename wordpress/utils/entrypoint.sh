@@ -6,11 +6,23 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 14:34:37 by aliens            #+#    #+#              #
-#    Updated: 2022/10/01 17:42:14 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/01 17:44:06 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/sh
+
+rm -rf /var/www/worpress/wp-config.php
+
+echo "create config.php"
+wp config create \
+	--dbname=$MARIADB_DATABASE \
+	--dbuser=$MARIADB_USER \
+	--dbpass=$MARIADB_USER_PASSWORD \
+	--dbhost=$MARIADB_HOST \
+	--path="/var/www/wordpress/" \
+	--allow-root \
+	--skip-check
 
 if ! wp core is-installed --allow-root; then
 	echo "install wordpress"
@@ -48,17 +60,5 @@ if ! wp core is-installed --allow-root; then
 			ils arrivent pour vous manger !!!" \
 		--allow-root
 fi
-
-rm -rf /var/www/worpress/wp-config.php
-
-echo "create config.php"
-wp config create \
-	--dbname=$MARIADB_DATABASE \
-	--dbuser=$MARIADB_USER \
-	--dbpass=$MARIADB_USER_PASSWORD \
-	--dbhost=$MARIADB_HOST \
-	--path="/var/www/wordpress/" \
-	--allow-root \
-	--skip-check
 
 php-fpm7.3 --nodemonize
