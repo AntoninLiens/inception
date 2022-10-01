@@ -29,7 +29,7 @@ services:
       - wordpress-volume:/var/www/wordpress
     depends_on:
       mariadb:
-        condition: healthy
+        condition: service_healthy
     restart: unless-stopped
       
   # nginx:
