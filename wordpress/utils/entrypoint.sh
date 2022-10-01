@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 14:34:37 by aliens            #+#    #+#              #
-#    Updated: 2022/10/01 17:40:27 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/01 17:42:14 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ if ! wp core is-installed --allow-root; then
 		--title=$WORPRESS_TITLE \
 		--admin-user=$WORPRESS_ROOT \
 		--admin-password=$WORPRESS_ROOT_PASSWORD \
-		--path="/var/www/wordpress"
+		--path="/var/www/wordpress" \
 		--allow-root \
 		--skip-email
 
@@ -37,14 +37,14 @@ if ! wp core is-installed --allow-root; then
 	wp post generate \
 		--count=1 \
 		--post-title= \
-			"Les Aliens sont partout, \
-			ils sont dans les campagnes, \
+			"Les Aliens sont partout,
+			ils sont dans les campagnes,
 			ils sont dans les villes !!!!" \
 		--post-author="Un Aliens gentils" \
 		--post-content= \
-			"J'ai traverse les armees des \
-			Aliens pour vous faire parvenir \
-			ce message; Vous devez ils sont partout, \
+			"J'ai traverse les armees des
+			Aliens pour vous faire parvenir
+			ce message; Vous devez ils sont partout,
 			ils arrivent pour vous manger !!!" \
 		--allow-root
 fi
