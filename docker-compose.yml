@@ -6,11 +6,11 @@ services:
     build: ./mariadb
     env_file: .env
     image: mariadb
-    restart: unless-stopped
     networks:
       - inside
     volumes:
       - mariadb-volume:/var/lib/mysql
+    restart: unless-stopped
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-u", "$MARIADB_USER", "-p $MARIADB_USER_PASSWORD"]
       interval: 10s
@@ -20,15 +20,16 @@ services:
   wordpress:
     container_name: wordpress
     build: ./wordpress
+    env_file: .env
     image: wordpress
     networks:
       - inside
+      - outside
+    volumes:
+      - wordpress-volume:/var/www/wordpress
     depends_on:
       mariadb:
-        condition: service_started
-    env_file: .env
-    volumes:
-      - wordpress-volume:/var/www/html
+        condition: healthy
     restart: unless-stopped
       
   # nginx:
@@ -36,7 +37,7 @@ services:
   #   build: ./nginx
   #   image: nginx
   #   networks:
-  #     - inside
+  #     - outside
   #   depends_on:
   #     - wordpress
   #   ports:
@@ -47,6 +48,7 @@ services:
 
 networks:
   inside:
+  outside:
 
 volumes:
   mariadb-volume:
