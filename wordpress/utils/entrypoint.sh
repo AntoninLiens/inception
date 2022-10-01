@@ -6,13 +6,12 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 14:34:37 by aliens            #+#    #+#              #
-#    Updated: 2022/10/01 17:48:46 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/01 18:00:08 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/sh
 
-# chown -R www-data:www-data /var/www/wordpress
 rm -rf /var/www/wordpress/wp-config.php
 
 echo "create config.php"
@@ -23,7 +22,8 @@ wp config create \
 	--dbhost=$MARIADB_HOST \
 	--path="/var/www/wordpress/" \
 	--allow-root \
-	--skip-check
+	--skip-check \
+	--skip-email
 
 if ! wp core is-installed --allow-root; then
 	echo "install wordpress"
