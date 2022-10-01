@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 14:34:37 by aliens            #+#    #+#              #
-#    Updated: 2022/10/01 17:21:38 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/01 17:40:27 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ if ! wp core is-installed --allow-root; then
 			"J'ai traverse les armees des \
 			Aliens pour vous faire parvenir \
 			ce message; Vous devez ils sont partout, \
-			ils arrivent pour vous manger !!!"
+			ils arrivent pour vous manger !!!" \
 		--allow-root
 fi
 
