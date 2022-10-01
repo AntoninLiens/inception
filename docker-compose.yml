@@ -24,7 +24,7 @@ services:
     image: wordpress
     networks:
       - inside
-      - outside
+     # - outside
     volumes:
       - wordpress-volume:/var/www/wordpress
     depends_on:
