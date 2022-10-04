@@ -17,20 +17,20 @@ services:
       timeout: 5s
       retries: 10
 
-  wordpress:
-    container_name: wordpress
-    build: ./wordpress
-    env_file: .env
-    image: wordpress
-    networks:
-      - inside
-     # - outside
-    volumes:
-      - wordpress-volume:/var/www/wordpress
-    depends_on:
-      mariadb:
-        condition: service_healthy
-    restart: unless-stopped
+  # wordpress:
+  #   container_name: wordpress
+  #   build: ./wordpress
+  #   env_file: .env
+  #   image: wordpress
+  #   networks:
+  #     - inside
+  #    # - outside
+  #   volumes:
+  #     - wordpress-volume:/var/www/wordpress
+  #   depends_on:
+  #     mariadb:
+  #       condition: service_healthy
+  #   restart: unless-stopped
       
   # nginx:
   #   container_name: nginx
@@ -57,9 +57,9 @@ volumes:
       device: /home/aliens/data/database
       type: volume
       o: bind
-  wordpress-volume:
-    driver: local
-    driver_opts:
-      device: /home/aliens/data/wordpress
-      type: volume
-      o: bind
+  # wordpress-volume:
+  #   driver: local
+  #   driver_opts:
+  #     device: /home/aliens/data/wordpress
+  #     type: volume
+  #     o: bind
