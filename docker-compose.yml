@@ -10,7 +10,7 @@ services:
       - inside
     volumes:
       - mariadb-volume:/var/lib/mysql
-    port:
+    ports:
       - 3306
     restart: unless-stopped
     healthcheck:
