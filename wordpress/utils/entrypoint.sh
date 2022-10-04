@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 14:34:37 by aliens            #+#    #+#              #
-#    Updated: 2022/10/04 16:27:02 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/04 16:30:28 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,6 @@ if ! wp core is-installed --allow-root; then
 		--title=$WORPRESS_TITLE \
 		--admin_user=$WORPRESS_ROOT \
 		--admin_password=$WORPRESS_ROOT_PASSWORD \
-		--path="/var/www/wordpress" \
 		--allow-root \
 		--skip-email
 
