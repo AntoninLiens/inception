@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/26 17:44:18 by aliens            #+#    #+#              #
-#    Updated: 2022/09/28 14:34:22 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/04 13:24:43 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,9 @@ if [ ! -d /var/lib/mysql/$MARIADB_DATABASE ]; then
 
 	echo "update root password"
 	mysql -e "UPDATE mysql.user SET Password = PASSWORD('$MARIADB_ROOT_PASSWORD') WHERE User = 'root'"
+	
+	echo "delete root access"
+	mysql -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1')"
 
 	echo "create $MARIADB_DATABASE"
 	mysql -e "create database $MARIADB_DATABASE"
