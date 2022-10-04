@@ -10,8 +10,8 @@ services:
       - inside
     volumes:
       - mariadb-volume:/var/lib/mysql
-    ports:
-      - 3306
+    # ports:
+    #   - 3306
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-u", "$MARIADB_USER", "-p $MARIADB_USER_PASSWORD"]
