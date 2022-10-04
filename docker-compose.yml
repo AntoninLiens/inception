@@ -57,9 +57,9 @@ volumes:
       device: /home/aliens/data/database
       type: volume
       o: bind
-  # wordpress-volume:
-  #   driver: local
-  #   driver_opts:
-  #     device: /home/aliens/data/wordpress
-  #     type: volume
-  #     o: bind
+  wordpress-volume:
+    driver: local
+    driver_opts:
+      device: /home/aliens/data/wordpress
+      type: volume
+      o: bind
