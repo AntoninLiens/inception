@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 14:34:37 by aliens            #+#    #+#              #
-#    Updated: 2022/10/05 11:14:39 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/05 11:18:20 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,9 @@ wp config create \
 	--dbuser=$MARIADB_USER \
 	--dbpass=$MARIADB_USER_PASSWORD \
 	--dbhost=$MARIADB_HOST \
-	# --path="/var/www/wordpress/" \
 	--allow-root \
 	--skip-check
+	# --path="/var/www/wordpress/" \
 
 if ! wp core is-installed --allow-root; then
 	echo "install wordpress"
