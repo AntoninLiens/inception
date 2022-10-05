@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 14:08:45 by aliens            #+#    #+#              #
-#    Updated: 2022/10/04 16:28:07 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/05 10:24:33 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ RUN	apt-get update \
 RUN	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
 	&& chmod +x wp-cli.phar \
 	&& mv wp-cli.phar /usr/local/bin/wp \
-	&& mkdir -p /var/www/wordpress
+	&& mkdir -p /var/www/wordpress \
+	&& chown -R www-data:www-data /var/www/wordpress
 
 RUN wp core download --path="/var/www/wordpress" --allow-root
 
