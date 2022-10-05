@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 16:00:46 by aliens            #+#    #+#              #
-#    Updated: 2022/10/05 11:05:49 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/05 11:15:20 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ down:
 	docker-compose -f docker-compose.yml down
 
 clean: down
-	docker-compose -f docker-compose.yml --rmi all
+	docker-compose -f docker-compose.yml -v --rmi all
 	docker volume rm inception_mariadb-volume
 	docker volume rm inception_wordpress-volume
 
