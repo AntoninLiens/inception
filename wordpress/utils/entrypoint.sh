@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 14:34:37 by aliens            #+#    #+#              #
-#    Updated: 2022/10/06 11:32:45 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/06 14:32:59 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,4 +62,4 @@ fi
 # 		--allow-root
 # fi
 
-# php-fpm7.3 --nodemonize
+php-fpm7.3 --nodemonize
