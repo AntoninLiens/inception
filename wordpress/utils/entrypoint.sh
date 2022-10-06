@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 14:34:37 by aliens            #+#    #+#              #
-#    Updated: 2022/10/06 11:13:14 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/06 11:18:14 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,4 +61,4 @@ if ! wp core is-installed --allow-root; then
 # 		--allow-root
 # fi
 
-# php-fpm7.3 --nodemonize
+php-fpm7.3 --nodemonize
