@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 14:34:37 by aliens            #+#    #+#              #
-#    Updated: 2022/10/06 11:09:44 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/06 11:13:14 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,15 +24,16 @@ wp config create \
 	--allow-root \
 	--skip-check
 
-# if ! wp core is-installed --allow-root; then
-# 	echo "install wordpress"
-# 	wp core install \
-# 		--url=$WORDPRESS_URL \
-# 		--title=$WORDPRESS_TITLE \
-# 		--admin_user=$WORDPRESS_ROOT \
-# 		--admin_password=$WORDPRESS_ROOT_PASSWORD \
-# 		--allow-root \
-# 		--skip-email
+if ! wp core is-installed --allow-root; then
+	echo "install wordpress"
+	wp core install \
+		--url=$WORDPRESS_URL \
+		--title=$WORDPRESS_TITLE \
+		--admin_user=$WORDPRESS_ROOT \
+		--admin_password=$WORDPRESS_ROOT_PASSWORD \
+		--path="/var/www/wordpress/"
+		--allow-root \
+		--skip-email
 
 # 	echo "update wordpress"
 # 	wp plugin update --all --allow-root
