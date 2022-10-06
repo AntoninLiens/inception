@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/12 19:31:07 by aliens            #+#    #+#              #
-#    Updated: 2022/10/06 14:34:53 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/06 14:36:38 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ RUN	chown -R mysql:mysql /var/lib/mysql; \
 	chown -R mysql:mysql /var/run/mysqld; \
 	mkfifo /var/run/mysqld/mysqld.sock
 
-COPY ./utils/mariadb.cnf /etc/mysql/mariadb.cnf
+# COPY ./utils/mariadb.cnf /etc/mariadb.cnf
+# COPY ./utils/mariadb.cnf /etc/mysql/mariadb.cnf
 COPY ./utils/entrypoint.sh ./
 
 ENTRYPOINT [ "bash", "entrypoint.sh" ]
