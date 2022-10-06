@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 14:08:45 by aliens            #+#    #+#              #
-#    Updated: 2022/10/06 15:03:52 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/06 15:04:20 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ RUN	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 	&& mkdir -p /var/www/wordpress \
 	&& chown -R www-data:www-data /var/www/wordpress
 
-RUN wp core download --path="/var/www/wordpress/" --allow-root --locale=fr_be
+RUN wp core download --path="/var/www/wordpress/" --allow-root
 
 COPY utils/entrypoint.sh ./
 
