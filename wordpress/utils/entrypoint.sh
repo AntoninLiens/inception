@@ -6,12 +6,11 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 14:34:37 by aliens            #+#    #+#              #
-#    Updated: 2022/10/06 14:42:21 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/06 14:47:05 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/sh
-
 
 echo "create config.php"
 rm -rf /var/www/wordpress/wp-config.php
