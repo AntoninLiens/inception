@@ -3,7 +3,7 @@ version : "3.9"
 services:
   mariadb:
     container_name: mariadb
-    build: ./mariadb
+    build: ./requirements/mariadb
     env_file: .env
     image: mariadb
     networks:
@@ -19,7 +19,7 @@ services:
 
   wordpress:
     container_name: wordpress
-    build: ./wordpress
+    build: ./requirements/wordpress
     env_file: .env
     image: wordpress
     networks:

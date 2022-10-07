@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 16:00:46 by aliens            #+#    #+#              #
-#    Updated: 2022/10/05 12:05:43 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/07 12:22:10 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,16 +16,16 @@ all:
 	sudo mkdir -p /home/aliens/data/wordpress
 	sudo chmod 777 /etc/hosts
 	sudo echo "127.0.0.1 aliens.19.be" >> /etc/hosts
-	docker-compose -f docker-compose.yml up # --detach
+	docker-compose -f ./srcs/docker-compose.yml up # --detach
 
 up:
-	docker-compose -f docker-compose.yml up # --detach
+	docker-compose -f ./srcs/docker-compose.yml up # --detach
 
 down:
-	docker-compose -f docker-compose.yml down
+	docker-compose -f ./srcs/docker-compose.yml down
 
 clean: down
-	docker-compose -f docker-compose.yml -v --rmi all
+	docker-compose -f ./srcs/docker-compose.yml -v --rmi all
 	docker volume rm inception_mariadb-volume
 	docker volume rm inception_wordpress-volume
 
