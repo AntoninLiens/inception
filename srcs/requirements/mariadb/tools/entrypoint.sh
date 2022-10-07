@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/26 17:44:18 by aliens            #+#    #+#              #
-#    Updated: 2022/10/07 14:31:14 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/07 14:34:27 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 chown -R mysql:mysql /var/lib/mysql
 
 if [ ! -d /var/lib/mysql/$MARIADB_DATABASE ]; then
-	service mysql start
+	service mysql start --datadir=/var/lib/mysql
 
 	mkdir -p /var/run/mysqld
 	touch /var/run/mysqld/mysqlf.pid
@@ -34,7 +34,7 @@ if [ ! -d /var/lib/mysql/$MARIADB_DATABASE ]; then
 	echo "apply changes"
 	mysql -e "FLUSH PRIVILEGES"
 
-	service mysql stop
+	service mysql stop --datadir=/var/lib/mysql
 else
 	mkdir -p /var/run/mysqld
 	touch /var/run/mysqld/mysqlf.pid
