@@ -5,60 +5,31 @@
 #                                                     +:+ +:+         +:+      #
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/09/28 14:34:37 by aliens            #+#    #+#              #
-#    Updated: 2022/10/06 14:47:05 by aliens           ###   ########.fr        #
+#    Created: 2022/09/26 17:44:18 by aliens            #+#    #+#              #
+#    Updated: 2022/10/07 10:13:13 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/sh
 
-echo "create config.php"
-rm -rf /var/www/wordpress/wp-config.php
-wp config create \
-	--dbname=$MARIADB_DATABASE \
-	--dbuser=$MARIADB_USER \
-	--dbpass=$MARIADB_USER_PASSWORD \
-	--dbhost=$MARIADB_HOST \
-	--path="/var/www/wordpress/" \
-	--allow-root \
-	--skip-check
+if [ ! -d /var/lib/mysql/$MARIADB_DATABASE ]; then
+	service mysql start
 
-if ! wp core is-installed --path="/var/www/wordpress/" --allow-root; then
-	echo "install wordpress"
-	wp core install \
-		--url=$WORDPRESS_URL \
-		--title=$WORDPRESS_TITLE \
-		--admin_user=$WORDPRESS_ROOT \
-		--admin_password=$WORDPRESS_ROOT_PASSWORD \
-		--path="/var/www/wordpress/" \
-		--allow-root \
-		--skip-email
+	echo "update root password"
+	mysql -e "UPDATE mysql.user SET Password = PASSWORD('$MARIADB_ROOT_PASSWORD') WHERE User = 'root'"
+	
+	echo "delete root access"
+	mysql -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1')"
+
+	echo "create $MARIADB_DATABASE"
+	mysql -e "create database $MARIADB_DATABASE"
+	mysql -e "create user '$MARIADB_USER'@'%' identified by '$MARIADB_USER_PASSWORD'"
+	mysql -e "grant all privileges on $MARIADB_DATABASE.* to $MARIADB_USER@'%'"
+
+	echo "apply changes"
+	mysql -e "FLUSH PRIVILEGES"
+
+	service mysql stop
 fi
 
-# 	echo "update wordpress"
-# 	wp plugin update --all --allow-root
-
-# 	echo "create first user"
-# 	wp user create $WORDPRESS_USER \
-# 		--user-pass=$WORDPRESS_USER_PASSWORD \
-# 		--role-editor \
-# 		--allow-root \
-# 		--skip-email
-
-# 	echo "create first post"
-# 	wp post generate \
-# 		--count=1 \
-# 		--post-title= \
-# 			"Les Aliens sont partout,
-# 			ils sont dans les campagnes,
-# 			ils sont dans les villes !!!!" \
-# 		--post-author="Un Aliens gentils" \
-# 		--post-content= \
-# 			"J'ai traverse les armees des
-# 			Aliens pour vous faire parvenir
-# 			ce message; Vous devez ils sont partout,
-# 			ils arrivent pour vous manger !!!" \
-# 		--allow-root
-# fi
-
-# php-fpm7.3 --nodemonize
+mysqld_safe --datadir=/var/lib/mysql

@@ -1,27 +1,29 @@
-#Installing and updating Debian Buster
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Dockerfile                                         :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/09/28 14:08:45 by aliens            #+#    #+#              #
+#    Updated: 2022/10/06 15:17:39 by aliens           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 FROM debian:buster
-RUN	apt-get update -y 
-RUN apt-get upgrade -y
 
-#Installing all correct dependencies for php
-RUN	apt-get install -y php7.3 php7.3-fpm php7.3-mysql curl
+RUN	apt-get update \
+	&& apt-get upgrade -y \
+	&& apt-get install -y curl php7.3 php7.3-fpm php7.3-mysql
 
-#If /tmp/wordpress/ doesn't exist we create it and work inside
-WORKDIR /tmp/wordpress/
+RUN	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+	&& chmod +x wp-cli.phar \
+	&& mv wp-cli.phar /usr/local/bin/wp \
+	&& mkdir -p /var/www/wordpress \
+	&& chown -R www-data:www-data /var/www/wordpress
 
-COPY tools/config.sh /tmp/wordpress/
-#Not sure if needed
-RUN mkdir -p /run/php
+RUN wp core download --path="/var/www/wordpress/" --allow-root
 
-#Installing WordPress CLI 
-RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-RUN chmod +x wp-cli.phar
-RUN mv wp-cli.phar /usr/local/bin/wp
+COPY utils/entrypoint.sh ./
 
-WORKDIR /var/www/html/wordpress
-
-#Download and extract WordPress core files to default folder (wp cli command)
-RUN wp core download --allow-root
-RUN chown -R www-data:www-data /var/www/html
-
-ENTRYPOINT ["sh", "/tmp/wordpress/config.sh"]
+ENTRYPOINT [ "bash", "entrypoint.sh" ]

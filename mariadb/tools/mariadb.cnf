@@ -1,0 +1,4 @@
+# More configuration details for mariaDB
+[galera] #We need it to precise address and port
+bind-address=0.0.0.0 #mariadb may bind to any network interface
+port=3306 #port requested by the subject. It's the default port for mariadb but we precise it by security
