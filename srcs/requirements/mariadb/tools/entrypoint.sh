@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/26 17:44:18 by aliens            #+#    #+#              #
-#    Updated: 2022/10/07 14:43:28 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/07 15:30:39 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,11 @@
 
 if [ ! -d /var/lib/mysql/$MARIADB_DATABASE ]; then
 	service mysql start
+
+	echo "trying something"
+	mkdir -p /var/run/mysqld
+	touch /var/run/mysqld/mysqlf.pid
+	
 
 	echo "update root password"
 	mysql -e "UPDATE mysql.user SET Password = PASSWORD('$MARIADB_ROOT_PASSWORD') WHERE User = 'root'"
@@ -30,6 +35,12 @@ if [ ! -d /var/lib/mysql/$MARIADB_DATABASE ]; then
 	mysql -e "FLUSH PRIVILEGES"
 
 	service mysql stop
+else
+	mkdir -p /var/run/mysqld
+	touch /var/run/mysqld/mysqlf.pid
+	mkfifo /var/run/mk
 fi
+
+chown -R mysql:mysql /var/run/mysqld
 
 mysqld_safe --datadir=/var/lib/mysql
