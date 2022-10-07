@@ -6,12 +6,12 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 16:00:46 by aliens            #+#    #+#              #
-#    Updated: 2022/10/07 12:22:10 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/07 12:27:09 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 all:
-	docker-compose -f docker-compose.yml build
+	docker-compose -f ./srcs/docker-compose.yml build
 	sudo mkdir -p /home/aliens/data/database
 	sudo mkdir -p /home/aliens/data/wordpress
 	sudo chmod 777 /etc/hosts
