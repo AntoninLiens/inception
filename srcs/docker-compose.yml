@@ -20,15 +20,15 @@ services:
   wordpress:
     container_name: wordpress
     build: ./requirements/wordpress
+    depends_on:
+      mariadb:
+        condition: service_healthy
     env_file: .env
     image: wordpress
     networks:
       - inside
     volumes:
       - wordpress-volume:/var/www/wordpress
-    depends_on:
-      mariadb:
-        condition: service_healthy
     restart: unless-stopped
 
 networks:
