@@ -24,31 +24,15 @@ services:
     image: wordpress
     networks:
       - inside
-     # - outside
     volumes:
       - wordpress-volume:/var/www/wordpress
     depends_on:
       mariadb:
         condition: service_healthy
     restart: unless-stopped
-      
-  # nginx:
-  #   container_name: nginx
-  #   build: ./nginx
-  #   image: nginx
-  #   networks:
-  #     - outside
-  #   depends_on:
-  #     - wordpress
-  #   ports:
-  #     - "443:443"
-  #   volumes:
-  #     - "wordpress-volume:/var/www/html"
-  #   restart: unless-stopped
 
 networks:
   inside:
-  # outside:
 
 volumes:
   mariadb-volume:
