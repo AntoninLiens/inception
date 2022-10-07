@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/26 17:44:18 by aliens            #+#    #+#              #
-#    Updated: 2022/10/07 15:49:26 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/07 16:05:55 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,7 @@ if [ ! -d /var/lib/mysql/$MARIADB_DATABASE ]; then
 	touch /var/run/mysqld/mysqlf.pid
 
 	echo "create $MARIADB_DATABASE"
-	mysql -e "create database $MARIADB_DATABASE"
-	mysql -e "create user '$MARIADB_USER'@'%' identified by '$MARIADB_USER_PASSWORD'"
-	mysql -e "grant all privileges on $MARIADB_DATABASE.* to $MARIADB_USER@'%'"
+	eval "echo \"$(cat /tmp/config.sql)\"" | mariadb -u root
 
 	echo "apply changes"
 	mysql -e "FLUSH PRIVILEGES"
