@@ -28,7 +28,7 @@ services:
     networks:
       - inside
     volumes:
-      - wordpress-volume:/var/www/wordpress
+      - wordpress-volume:/var/www
     restart: unless-stopped
 
 networks:
