@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/26 17:44:18 by aliens            #+#    #+#              #
-#    Updated: 2022/10/07 15:45:51 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/07 15:49:26 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,9 @@ if [ ! -d /var/lib/mysql/$MARIADB_DATABASE ]; then
 
 	echo "apply changes"
 	mysql -e "FLUSH PRIVILEGES"
+
+	echo "change root password"
+	mysqladmin -u root password $MARIADB_ROOT_PASSWORD;
 
 	service mysql stop
 else
