@@ -6,12 +6,11 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 14:08:22 by aliens            #+#    #+#              #
-#    Updated: 2022/10/10 14:09:34 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/10 14:41:43 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/sh
-
 
 if ! wp core is-installed --allow-root; then
 	
