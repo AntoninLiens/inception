@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 14:08:22 by aliens            #+#    #+#              #
-#    Updated: 2022/10/10 15:14:05 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/10 15:26:41 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@
 			--dbuser=$MARIADB_USER \
 			--dbpass=$MARIADB_PASSWORD \
 			--dbhost=$MARIADB_HOST \
-			--path="/var/www/html/wordpress/" \
+			--path="/var/www/wordpress/" \
 			--allow-root \
 			--skip-check
 
