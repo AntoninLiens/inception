@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 14:34:37 by aliens            #+#    #+#              #
-#    Updated: 2022/10/10 10:17:09 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/10 10:18:56 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,7 @@ fi
 rm -rf /var/www/html/wordpress/wp-config.php
 wp config create --dbname=$MARIADB_DATABASE \
 		--dbuser=$MARIADB_USER \
-		--dbpass=$MARIADB_PASSWORD \
+		--dbpass=$MARIADB_USER_PASSWORD \
 		--dbhost=$MARIADB_HOST \
 		--path="/var/www/html/wordpress/" \
 		--allow-root \
@@ -88,9 +88,8 @@ if ! wp core is-installed --allow-root; then
 	echo "--Installing Wordpress"
 	wp core install --url="$WORDPRESS_URL" \
 					--title="$WORDPRESS_TITLE" \
-					--admin_user="$WORDPRESS_ADMIN_USER" \
-					--admin_password="$WORDPRESS_ADMIN_PWD" \
-					--admin_email="$WORDPRESS_ADMIN_EMAIL" \
+					--admin_user="$WORDPRESS_ROOT" \
+					--admin_password="$WORDPRESS_ROOT_PASSWORD" \
 					--skip-email \
 					--allow-root
 
@@ -102,8 +101,8 @@ wp plugin update --all --allow-root
 
 # Create user (check how simon does it)
 echo "--Creating example user"
-wp user create $WORDPRESS_USER $WORDPRESS_USER_EMAIL --role=editor \
-													--user_pass=$WORDPRESS_USER_PWD \
+wp user create $WORDPRESS_USER --role=editor \
+													--user_pass=$WORDPRESS_USER_PASSWORD \
 													--allow-root
 # Create article example 
 echo "--Creating example article"
