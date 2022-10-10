@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 11:55:25 by aliens            #+#    #+#              #
-#    Updated: 2022/10/10 17:24:40 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/10 17:27:44 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,4 @@ COPY tools/mariadb.cnf /etc/mysql/
 COPY ./tools/config.sql ./
 COPY ./tools/entrypoint.sh ./
 
-WORKDIR /var/lib/mysql
-
-ENTRYPOINT [ "sh", "/entrypoint.sh" ]
+ENTRYPOINT [ "sh", "entrypoint.sh" ]
