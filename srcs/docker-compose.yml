@@ -1,22 +1,72 @@
+# version : "3.9"
+
+# services:
+#   mariadb:
+#     container_name: mariadb
+#     build: ./requirements/mariadb
+#     env_file: .env
+#     image: mariadb
+#     networks:
+#       - inception_network
+#     volumes:
+#       - mariadb-volume:/var/lib/mysql
+#     restart: unless-stopped
+#     healthcheck:
+#       test: ["CMD", "mysqladmin", "ping", "-u", "$MARIADB_USER", "-p $MARIADB_USER_PASSWORD"]
+#       interval: 10s
+#       timeout: 5s
+#       retries: 10
+
+#   wordpress:
+#     container_name: wordpress
+#     build: ./requirements/wordpress
+#     depends_on:
+#       mariadb:
+#         condition: service_healthy
+#     env_file: .env
+#     image: wordpress
+#     networks:
+#       - inception_network
+#     volumes:
+#       - wordpress-volume:/var/www/html
+#     restart: unless-stopped
+
+# networks:
+#   inception_network:
+
+# volumes:
+#   mariadb-volume:
+#     driver: local
+#     driver_opts:
+#       device: /home/aliens/data/database
+#       type: volume
+#       o: bind
+#   wordpress-volume:
+#     driver: local
+#     driver_opts:
+#       device: /home/aliens/data/wordpress
+#       type: volume
+#       o: bind
+
 version : "3.9"
 
+#Services that will be built and ran
 services:
   mariadb:
     container_name: mariadb
     build: ./requirements/mariadb
     env_file: .env
     image: mariadb
+    restart: unless-stopped
     networks:
       - inception_network
     volumes:
       - mariadb-volume:/var/lib/mysql
-    restart: unless-stopped
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-u", "$MARIADB_USER", "-p $MARIADB_USER_PASSWORD"]
+      test: ["CMD", "mysqladmin", "ping", "-u", "$MARIADB_USER", "-p$MARIADB_PASSWORD"]
       interval: 10s
       timeout: 5s
-      retries: 10
-
+      retries: 5
   wordpress:
     container_name: wordpress
     build: ./requirements/wordpress
@@ -25,15 +75,17 @@ services:
         condition: service_healthy
     env_file: .env
     image: wordpress
+    restart: unless-stopped
     networks:
       - inception_network
     volumes:
       - wordpress-volume:/var/www/html
-    restart: unless-stopped
 
+#Name of the network used by the containers to communicate
 networks:
   inception_network:
 
+#External volumes to configure for the use of the containers
 volumes:
   mariadb-volume:
     driver: local
