@@ -63,23 +63,23 @@ services:
     volumes:
       - mariadb-volume:/var/lib/mysql
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-u", "$MARIADB_USER", "-p$MARIADB_PASSWORD"]
+      test: ["CMD", "mysqladmin", "ping", "-u", "$MARIADB_USER", "-p$MARIADB_USER_PASSWORD"]
       interval: 10s
       timeout: 5s
       retries: 5
-  # wordpress:
-  #   container_name: wordpress
-  #   build: ./requirements/wordpress
-  #   depends_on:
-  #     mariadb:
-  #       condition: service_healthy
-  #   env_file: .env
-  #   image: wordpress
-  #   restart: unless-stopped
-  #   networks:
-  #     - inception_network
-  #   volumes:
-  #     - wordpress-volume:/var/www/html
+  wordpress:
+    container_name: wordpress
+    build: ./requirements/wordpress
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    env_file: .env
+    image: wordpress
+    restart: unless-stopped
+    networks:
+      - inception_network
+    volumes:
+      - wordpress-volume:/var/www/html
 
 #Name of the network used by the containers to communicate
 networks:
