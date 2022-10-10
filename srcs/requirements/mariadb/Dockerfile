@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 11:55:25 by aliens            #+#    #+#              #
-#    Updated: 2022/10/10 11:55:26 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/10 15:09:35 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ RUN apt-get update && \
 RUN chown -R mysql:mysql /var/lib/mysql; \
 	mkdir -p /var/run/mysqld; \
 	touch /var/run/mysqld/mysqlf.pid; \
-	mkfifo /var/run/mk; \
+	mkfifo /var/run/mysqld/mysqld.sock; \
 	chown -R mysql:mysql /var/run/mysqld
 
 COPY tools/mariadb.cnf /etc/mysql/
