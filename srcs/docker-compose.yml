@@ -67,19 +67,19 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-  wordpress:
-    container_name: wordpress
-    build: ./requirements/wordpress
-    depends_on:
-      mariadb:
-        condition: service_healthy
-    env_file: .env
-    image: wordpress
-    restart: unless-stopped
-    networks:
-      - inception_network
-    volumes:
-      - wordpress-volume:/var/www/html
+  # wordpress:
+  #   container_name: wordpress
+  #   build: ./requirements/wordpress
+  #   depends_on:
+  #     mariadb:
+  #       condition: service_healthy
+  #   env_file: .env
+  #   image: wordpress
+  #   restart: unless-stopped
+  #   networks:
+  #     - inception_network
+  #   volumes:
+  #     - wordpress-volume:/var/www/html
 
 #Name of the network used by the containers to communicate
 networks:
