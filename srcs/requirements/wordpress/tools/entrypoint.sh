@@ -53,4 +53,5 @@ if ! wp core is-installed --allow-root; then
 		--allow-root
 fi
 
+echo "start"
 php-fpm7.3 --nodaemonize
