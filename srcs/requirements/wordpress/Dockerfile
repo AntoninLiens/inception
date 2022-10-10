@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 12:14:30 by aliens            #+#    #+#              #
-#    Updated: 2022/10/10 12:23:40 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/10 15:15:04 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 	chmod +x wp-cli.phar && \
 	mv wp-cli.phar /usr/local/bin/wp
 
-WORKDIR /var/www/html/wordpress
+WORKDIR /var/www/wordpress
 
 RUN wp core download --allow-root
 RUN chown -R www-data:www-data /var/www/html

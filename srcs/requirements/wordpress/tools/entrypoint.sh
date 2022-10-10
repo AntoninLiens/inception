@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 14:08:22 by aliens            #+#    #+#              #
-#    Updated: 2022/10/10 14:44:07 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/10 15:14:05 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,9 +51,9 @@ if ! wp core is-installed --allow-root; then
 			ils sont dans les villes !!!!" \
 		--post-author="Un Aliens gentils" \
 		--post-content= \
-			"J'ai traverse les armees des
+			"J'ai traversé les armées des
 			Aliens pour vous faire parvenir
-			ce message; Vous devez ils sont partout,
+			ce message; Vous devez fuir, ils sont partout,
 			ils arrivent pour vous manger !!!" \
 		--allow-root
 fi
