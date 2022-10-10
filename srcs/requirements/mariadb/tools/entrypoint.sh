@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 11:54:04 by aliens            #+#    #+#              #
-#    Updated: 2022/10/10 14:40:49 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/10 14:44:23 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ if [ ! -d /var/lib/mysql/$MARIADB_DATABASE ]; then
 	service mysql start --datadir=/var/lib/mysql
 
 	echo "create $MARIADB_DATABASE"
-	eval "echo \"cat /tmp/config.sql\"" | mariadb -u root
+	cat /tmp/config.sql | mariadb -u root
 
 	service mysql stop --datadir=/var/lib/mysql
 fi
