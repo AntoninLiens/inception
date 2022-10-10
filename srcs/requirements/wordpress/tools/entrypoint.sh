@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 14:34:37 by aliens            #+#    #+#              #
-#    Updated: 2022/10/10 10:34:23 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/10 11:44:54 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,32 +33,31 @@ if ! wp core is-installed --path="/var/www/html/wordpress/" --allow-root; then
 		--path="/var/www/html/wordpress/" \
 		--allow-root \
 		--skip-email
+
+	echo "update wordpress"
+	wp plugin update --all --allow-root
+
+	echo "create first user"
+	wp user create $WORDPRESS_USER \
+		--user-pass=$WORDPRESS_USER_PASSWORD \
+		--role-editor \
+		--allow-root \
+		--skip-email
+
+	echo "create first post"
+	wp post generate \
+		--count=1 \
+		--post-title= \
+			"Les Aliens sont partout,
+			ils sont dans les campagnes,
+			ils sont dans les villes !!!!" \
+		--post-author="Un Aliens gentils" \
+		--post-content= \
+			"J'ai traverse les armees des
+			Aliens pour vous faire parvenir
+			ce message; Vous devez ils sont partout,
+			ils arrivent pour vous manger !!!" \
+		--allow-root
 fi
 
-# 	echo "update wordpress"
-# 	wp plugin update --all --allow-root
-
-# 	echo "create first user"
-# 	wp user create $WORDPRESS_USER \
-# 		--user-pass=$WORDPRESS_USER_PASSWORD \
-# 		--role-editor \
-# 		--allow-root \
-# 		--skip-email
-
-# 	echo "create first post"
-# 	wp post generate \
-# 		--count=1 \
-# 		--post-title= \
-# 			"Les Aliens sont partout,
-# 			ils sont dans les campagnes,
-# 			ils sont dans les villes !!!!" \
-# 		--post-author="Un Aliens gentils" \
-# 		--post-content= \
-# 			"J'ai traverse les armees des
-# 			Aliens pour vous faire parvenir
-# 			ce message; Vous devez ils sont partout,
-# 			ils arrivent pour vous manger !!!" \
-# 		--allow-root
-# fi
-
-# php-fpm7.3 --nodemonize
+php-fpm7.3 --nodemonize
