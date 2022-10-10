@@ -6,14 +6,12 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 14:08:22 by aliens            #+#    #+#              #
-#    Updated: 2022/10/10 14:41:43 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/10 14:44:07 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/sh
 
-if ! wp core is-installed --allow-root; then
-	
 	echo "create config.php"
 	rm -rf /var/www/html/wordpress/wp-config.php
 	wp config create \
@@ -24,7 +22,8 @@ if ! wp core is-installed --allow-root; then
 			--path="/var/www/html/wordpress/" \
 			--allow-root \
 			--skip-check
-	
+
+if ! wp core is-installed --allow-root; then	
 	echo "install wordpress"
 	wp core install \
 		--url="$WORDPRESS_URL" \
