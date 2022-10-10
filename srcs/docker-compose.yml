@@ -6,17 +6,16 @@ services:
     build: ./requirements/mariadb
     env_file: .env
     image: mariadb
+    restart: unless-stopped
     networks:
       - inside
     volumes:
       - mariadb-volume:/var/lib/mysql
-    restart: unless-stopped
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-u", "$MARIADB_USER", "-p $MARIADB_USER_PASSWORD"]
+      test: ["CMD", "mysqladmin", "ping", "-u", "$MARIADB_USER", "-p$MARIADB_PASSWORD"]
       interval: 10s
       timeout: 5s
       retries: 5
-
   wordpress:
     container_name: wordpress
     build: ./requirements/wordpress
@@ -25,11 +24,11 @@ services:
         condition: service_healthy
     env_file: .env
     image: wordpress
+    restart: unless-stopped
     networks:
       - inside
     volumes:
       - wordpress-volume:/var/www/html
-    restart: unless-stopped
 
 networks:
   inside:
