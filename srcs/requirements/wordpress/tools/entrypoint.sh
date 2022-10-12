@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 14:08:22 by aliens            #+#    #+#              #
-#    Updated: 2022/10/12 13:58:48 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/12 14:04:06 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,15 +47,7 @@ if ! wp core is-installed --allow-root; then
 		--count=1 \
 		--post_title=$WORDPRESS_TITLE\
 		--post_author=$WORDPRESS_ADMIN_USER \
-		--post_content= \
-			"Les Aliens sont partout,
-			ils sont dans les campagnes,
-			ils sont dans les villes !!!!
-			J'ai traversé les armées des
-			Aliens pour vous faire parvenir
-			ce message; Vous devez fuir, ils
-			sont partout, ils arrivent pour 
-			vous manger !!!" \
+		--post_content=$WORDPRESS_CONTENT \
 		--allow-root
 fi
 
