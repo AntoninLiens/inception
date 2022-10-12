@@ -38,6 +38,8 @@ services:
     restart: unless-stopped
     networks:
       - inside
+    port:
+      - 443
 
 networks:
   inside:
