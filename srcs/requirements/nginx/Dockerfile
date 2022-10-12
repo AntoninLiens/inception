@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 14:13:46 by aliens            #+#    #+#              #
-#    Updated: 2022/10/12 20:02:24 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/12 20:16:23 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,6 @@ RUN openssl req -x509 -nodes \
 	-out /etc/ssl/aliens.19.be.crt \
 	-subj "/C=BE/ST=Belgium/L=Brussels/O=42/OU=19/CN=aliens.19.be/UID=aliens"
 
-COPY ./tools/nginx.conf /etc/nginx/
+COPY ./tools/nginx.conf /etc/nginx/sites-enabled/default.conf
 
 CMD	[ "nginx", "-g", "daemon off;" ]
