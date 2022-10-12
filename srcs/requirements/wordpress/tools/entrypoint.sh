@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 14:08:22 by aliens            #+#    #+#              #
-#    Updated: 2022/10/12 14:04:06 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/12 20:41:39 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,8 +46,6 @@ if ! wp core is-installed --allow-root; then
 	wp post generate \
 		--count=1 \
 		--post_title=$WORDPRESS_TITLE\
-		--post_author=$WORDPRESS_ADMIN_USER \
-		--post_content=$WORDPRESS_CONTENT \
 		--allow-root
 fi
 
