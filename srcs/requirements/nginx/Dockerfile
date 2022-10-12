@@ -6,11 +6,11 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 14:13:46 by aliens            #+#    #+#              #
-#    Updated: 2022/10/12 16:14:40 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/12 16:31:51 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FROM debien:buster
+FROM debian:buster
 
 RUN	apt-get update && \
 	apt-get upgrade -y && \
