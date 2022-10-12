@@ -32,6 +32,7 @@ services:
   nginx:
     container_name: nginx
     build: ./requirements/nginx
+    image: nginx
     depends_on: 
       - wordpress
     restart: unless-stopped
