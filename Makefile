@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 16:00:46 by aliens            #+#    #+#              #
-#    Updated: 2022/10/12 16:55:12 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/12 17:08:51 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ up:
 
 down:
 	docker-compose -f ./srcs/docker-compose.yml down
+	docker image rm nginx
 
 clean: down
 	docker-compose -f ./srcs/docker-compose.yml -v --rmi all
@@ -31,6 +32,7 @@ clean: down
 
 fclean: down clean
 	sudo rm -rf /home/aliens/data
+	docker image rm nginx
 	docker image rm mariadb
 	docker image rm wordpress
 	docker image rm debian:buster
