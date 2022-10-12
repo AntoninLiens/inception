@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 14:13:46 by aliens            #+#    #+#              #
-#    Updated: 2022/10/12 16:31:51 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/12 16:34:04 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,4 +21,4 @@ RUN	apt-get update && \
 # 	-out /etc/ssl/server.crt \
 # 	-subj "/C=BE/ST=Belgium/L=Brussels/O=42/OU=19/CN=aliens.19.be/UID=aliens"
 
-CMD [ "nginx -g", "daemon off" ]
+# CMD [ "nginx -g", "daemon off" ]
