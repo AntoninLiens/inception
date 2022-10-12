@@ -29,6 +29,14 @@ services:
       - inside
     volumes:
       - wordpress-volume:/var/www/wordpress
+  nginx:
+    container_name: nginx
+    build: ./requirements/nginx
+    depends_on:
+      wordpress:
+    restart: unless-stopped
+    networks:
+      -inside
 
 networks:
   inside:
