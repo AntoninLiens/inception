@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 14:08:22 by aliens            #+#    #+#              #
-#    Updated: 2022/10/13 11:43:54 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/13 13:57:20 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ if [ $? -ne 0 ]; then
 	touch /.setup
 fi
 
-if [ ! wp core is-installed --allow-root ]; then	
+if ! wp core is-installed --allow-root; then	
 	echo "install wordpress"
 	wp core install \
 		--url="$WORDPRESS_URL" \
