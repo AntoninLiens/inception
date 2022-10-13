@@ -19,11 +19,11 @@ services:
   wordpress:
     container_name: wordpress
     build: ./requirements/wordpress
+    env_file: .env
+    image: wordpress
     depends_on:
       mariadb:
         condition: service_healthy
-    env_file: .env
-    image: wordpress
     restart: unless-stopped
     networks:
       - inside
