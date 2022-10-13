@@ -6,12 +6,14 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 14:08:22 by aliens            #+#    #+#              #
-#    Updated: 2022/10/13 11:14:09 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/13 11:43:54 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/sh
 
+cat /.setup 2> /dev/null
+if [ $? -ne 0 ]; then
 	echo "create config.php"
 	wp config create \
 			--dbname=$MARIADB_DATABASE \
@@ -21,8 +23,10 @@
 			--path="/var/www/wordpress/" \
 			--allow-root \
 			--skip-check
+	touch /.setup
+fi
 
-if ! wp core is-installed --allow-root; then	
+if [ ! wp core is-installed --allow-root ]; then	
 	echo "install wordpress"
 	wp core install \
 		--url="$WORDPRESS_URL" \

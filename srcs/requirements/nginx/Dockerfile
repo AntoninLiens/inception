@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 14:13:46 by aliens            #+#    #+#              #
-#    Updated: 2022/10/13 10:56:39 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/13 11:44:58 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,9 @@ RUN	apt-get update && \
 	apt-get install nginx openssl -y
 
 COPY ./tools/nginx.conf /etc/nginx/sites-enabled/default.conf
+
+RUN mkdir -p /etc/ssl && \
+	mkdir -p /var/run/nginx
 
 RUN openssl req -x509 -nodes \
 	-keyout /etc/ssl/aliens.19.be.key \
