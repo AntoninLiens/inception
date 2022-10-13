@@ -40,6 +40,8 @@ services:
       - inside
     ports:
       - 443:443
+    volumes:
+      - wordpress-volume:/var/www/wordpress
 
 networks:
   inside:
