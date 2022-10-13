@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 16:00:46 by aliens            #+#    #+#              #
-#    Updated: 2022/10/12 17:08:51 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/13 10:58:04 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,6 @@ up:
 
 down:
 	docker-compose -f ./srcs/docker-compose.yml down
-	docker image rm nginx
 
 clean: down
 	docker-compose -f ./srcs/docker-compose.yml -v --rmi all
