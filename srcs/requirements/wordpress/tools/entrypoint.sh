@@ -6,11 +6,17 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 14:08:22 by aliens            #+#    #+#              #
-#    Updated: 2022/10/13 13:57:20 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/13 15:05:24 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/sh
+
+grep -E "listen = 9000" "/etc/php/7.3/fpm/pool.d/www.conf" > /dev/null 2>&1
+if [ $? -ne 0 ]; then
+ 	echo "listen port configuration"
+	 sed -i "s|.*listen = /run/php/php7.3-fpm.sock.*|listen = 9000|g" "/etc/php/7.3/fpm/pool.d/www.conf" 
+fi
 
 cat /.setup 2> /dev/null
 if [ $? -ne 0 ]; then
