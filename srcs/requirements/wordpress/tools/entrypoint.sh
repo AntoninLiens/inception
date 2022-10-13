@@ -6,14 +6,13 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 14:08:22 by aliens            #+#    #+#              #
-#    Updated: 2022/10/12 20:41:39 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/13 11:14:09 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/sh
 
 	echo "create config.php"
-	rm -rf /var/www/wordpress/wp-config.php
 	wp config create \
 			--dbname=$MARIADB_DATABASE \
 			--dbuser=$MARIADB_USER \
