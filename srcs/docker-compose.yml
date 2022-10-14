@@ -38,15 +38,13 @@ services:
     restart: unless-stopped
     networks:
       - inside
-      - outside
     ports:
       - 443:443
     volumes:
       - wordpress-volume:/var/www/wordpress
 
 networks:
-  - inside
-  - outside
+  inside:
 
 volumes:
   mariadb-volume:
