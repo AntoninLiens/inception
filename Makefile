@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 16:00:46 by aliens            #+#    #+#              #
-#    Updated: 2022/10/14 09:59:01 by aliens           ###   ########.fr        #
+#    Updated: 2022/10/14 10:02:02 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,7 @@ all:
 	docker-compose -f ./srcs/docker-compose.yml build
 	sudo mkdir -p /home/aliens/data/database
 	sudo mkdir -p /home/aliens/data/wordpress
-	@grep -E "127.0.0.1 aliens.19.be" "/etc/hosts" > /dev/null 2>&1
-	if [ $? -ne 0 ]; then
-		sudo echo "127.0.0.1 aliens.19.be" >> /etc/hosts
-	fi
+	sudo echo "127.0.0.1 aliens.19.be" >> /etc/hosts
 	docker-compose -f ./srcs/docker-compose.yml up --detach
 
 up:
